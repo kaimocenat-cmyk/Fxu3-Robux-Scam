@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fxu3 Robux Generator</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #111827, #312e81);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      width: min(440px, calc(100% - 32px));
+      padding: 28px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      text-align: center;
+    }
+
+    h1 { margin: 0 0 8px; }
+    .warning {
+      color: #fbbf24;
+      font-weight: bold;
+      margin-bottom: 22px;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    button {
+      padding: 14px;
+      border: 0;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #111827;
+      background: #fbbf24;
+    }
+
+    button:hover { background: #fde68a; }
+
+    #result {
+      margin-top: 22px;
+      padding: 16px;
+      min-height: 55px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.25);
+      word-break: break-word;
+    }
+
+    .small {
+      margin-top: 16px;
+      font-size: 12px;
+      opacity: .75;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Fxu3 Generator</h1>
+    <p class="warning">As seen on youtube and tiktok.</p>
+
+    <div class="options">
+      <button onclick="generateFakeCode(999)">Generate 999 Robux</button>
+      <button onclick="generateFakeCode(10000)">Generate 10,000 Robux</button>
+      <button onclick="generateFakeCode(100000)">Generate 100,000 Robux</button>
+    </div>
+
+    <div id="result">Choose an amount to create a code.</div>
+
+    <p class="small">
+      This is a parody UI mockup. Roblox codes and Robux cannot be generated this way.
+    </p>
+  </main>
+
+  <script>
+    function randomPart(length) {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let output = "";
+
+      for (let i = 0; i < length; i++) {
+        output += chars[Math.floor(Math.random() * chars.length)];
+      }
+
+      return output;
+    }
+
+    function generateFakeCode(amount) {
+      const fakeCode =
+        "Robux-" + amount + "-" +
+        randomPart(4) + "-" +
+        randomPart(4) + "-" +
+        randomPart(4);
+
+      document.getElementById("result").innerHTML = `
+        <strong>Fake ${amount.toLocaleString()} Robux code:</strong><br>
+        ${fakeCode}<br><br>
+        <em>Enter this code at www.roblox.com/redeem</em>
+      `;
+    }
+  </script>
+</body>
+</html>
